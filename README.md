@@ -7,7 +7,7 @@
 
 ---
 
-< id="english-version"></a>
+<a id="english-version"></a>
 ## 🇬🇧 English Version
 
 This project focuses on predicting the **Remaining Useful Life (RUL)** of aircraft turbofan engines using the benchmark **NASA C-MAPSS (FD001)** dataset. By leveraging advanced feature engineering, time-series transformations, and state-of-the-art gradient boosting algorithms, this machine learning pipeline achieves highly accurate and explainable prognostic results.
@@ -23,7 +23,7 @@ The models were trained on the full lifecycle data and evaluated strictly on the
 
 | Model | R2 Score | MSE | MAE (Cycles) |
 | :--- | :---: | :---: | :---: |
-| Decision Tree | ~%55 - %60 | - | - |
+| Decision Tree | ~55% - 60% | - | - |
 | Random Forest | 71.68% | 488.91 | 16.43 |
 | **XGBoost (Champion)** | **80.25%** | **340.98** | **13.33** |
 
@@ -35,7 +35,7 @@ To avoid a "black-box" approach, **SHAP (SHapley Additive exPlanations)** was in
 
 ---
 
-< id="türkçe-versiyon"></a>
+<a id="türkçe-versiyon"></a>
 ## 🇹🇷 Türkçe Versiyon
 
 Bu proje, **NASA C-MAPSS (FD001)** veri setini kullanarak uçak turbofan motorlarının **Kalan Ömür (RUL)** tahminini gerçekleştirmektedir. Gelişmiş özellik mühendisliği, zaman serisi dönüşümleri ve gradyan artırma (XGBoost) algoritmaları kullanılarak, yüksek doğrulukta ve açıklanabilir tahmini bakım sonuçları elde edilmiştir.
