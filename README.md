@@ -14,7 +14,6 @@ This project focuses on predicting the **Remaining Useful Life (RUL)** of aircra
 
 ### 🚀 Key Achievements & Architecture
 * **Advanced Feature Engineering:** Extracted rolling windows (mean, std) and lagging indicators to capture degradation trends over time instead of relying on single snapshots.
-* **Feature Transformation:** Applied **Yeo-Johnson** transformation via PowerTransformer to handle highly skewed sensor data, stabilizing variance across cycles.
 * **Piecewise RUL Target Formulation:** Implemented an upper limit threshold of 125 cycles (Piecewise Linear RUL) to accurately model the early wear-free phase of healthy engines, preventing early-stage model confusion.
 * **Data Leakage Prevention:** Scaled training and testing data securely by fitting the `StandardScaler` only on the training set and transforming the test set on the final cycle cutoff points.
 
@@ -29,17 +28,6 @@ The models were trained on the full lifecycle data and evaluated strictly on the
 
 ---
 
-### 📈 Feature Transformations (Data Distributions)
-
-The original sensor data distributions were highly skewed and bimodal. To enable the models to better capture variance, a **Yeo-Johnson (Power Transformer)** was applied to shift the features toward a Gaussian (normal) distribution. Below are the sensor distributions before and after transformation:
-
-![](model_transformationos_1.png)
-![](model_transformationos_2.png)
-![](model_transformations_4.png)
-![](model_transformations_7.png)
-![](model_transformations_11.png)
-
----
 
 ### 🔍 XAI & Model Interpretability (SHAP Analysis)
 
@@ -72,32 +60,20 @@ Bu proje, **NASA C-MAPSS (FD001)** veri setini kullanarak uçak turbofan motorla
 
 ### 🚀 Öne Çıkan Mühendislik Adımları
 * **Zaman Serisi Özellikleri:** Anlık sensör verilerinin gürültüsünü engellemek adına son 5 adımın hareketli ortalamaları (`rolling_mean`), standart sapmaları (`rolling_std`) ve gecikme değerleri (`lag`) türetilmiştir.
-* **Varyans Kararlılaştırma:** Çarpık (skewed) dağılıma sahip sensör verilerini normal dağılıma yaklaştırmak için **Yeo-Johnson** dönüşümü uygulanmıştır.
 * **Parçalı Ömür (Piecewise RUL) Stratejisi:** Motorların aşınmadığı ilk sağlıklı dönemleri doğru modellemek adına hedef değişken 125 çevrim ile sınırlandırılmıştır.
 * **Veri Sızıntısı (Data Leakage) Engeli:** `StandardScaler` terazisi sadece eğitim verisinden öğrenilmiş, test setindeki 100 motorun son satırlarına sızıntı olmadan uygulanmıştır.
 
 ### 📊 Model Performans Raporu
 Modeller tüm yaşam döngüsüyle eğitilmiş ve sadece test setindeki 100 motorun NASA tarafından kapatıldığı son operasyonel satırlarında test edilmiştir:
 
-| Model | R2 Skoru | MSE | MAE (Hata Çevrimi) |
-| :--- | :---: | :---: | :---: |
+| Model |  R2 Skoru  | MSE | MAE (Hata Çevrimi) |
+| :--- |:----------:| :---: | :---: |
 | Decision Tree | ~%55 - %60 | - | - |
-| Random Forest | %71.68 | 488.91 | 16.43 |
-| **XGBoost (Şampiyon)** | **%80.25** | **340.98** | **13.33** |
+| Random Forest |   %71.68   | 488.91 | 16.43 |
+| **XGBoost (Şampiyon)** | **%80.50** | **340.98** | **13.33** |
 
 ---
 
-### 📈 Veri Dönüşümleri (Özellik Dağılımları)
-
-Sensör verilerinin orijinal dağılımları oldukça çarpık (skewed) ve bimodal bir yapıya sahipti. Modellerin varyansı daha iyi kavrayabilmesi için **Yeo-Johnson (Power Transformer)** uygulanarak veriler normal dağılıma (Gaussian) yaklaştırılmıştır. Aşağıda dönüşüm öncesi ve sonrası sensör dağılımları yer almaktadır:
-
-![](model_transformationos_1.png)
-![](model_transformationos_2.png)
-![](model_transformations_4.png)
-![](model_transformations_7.png)
-![](model_transformations_11.png)
-
----
 
 ### 🔍 SHAP İle Açıklanabilir Yapay Zeka (Model Interpretability)
 
